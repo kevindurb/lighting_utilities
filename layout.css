@@ -1,0 +1,17 @@
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+}
+
+.grid.col-2 {
+  grid-template-columns: 10% auto;
+}
+
+.grid > * {
+  justify-self: center;
+  align-self: center;
+}

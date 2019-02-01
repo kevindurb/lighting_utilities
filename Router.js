@@ -1,4 +1,4 @@
-import { $, $$, hide, unHide } from '/Utils.js';
+import * as _ from '/Utils.js';
 
 export default class Router {
   constructor() {
@@ -6,13 +6,16 @@ export default class Router {
 
   init() {
     this.navigate = this.navigate.bind(this);
-    window.addEventListener('hashchange', this.navigate);
+    _.listen('hashchange', this.navigate, window);
     this.navigate();
   }
 
   navigate() {
     const hash = this.getLocationHash();
-    this.showSection(hash);
+    if (hash) {
+      this.showSection(hash);
+      this.highlightLinks(hash);
+    }
   }
 
   getLocationHash() {
@@ -20,15 +23,23 @@ export default class Router {
   }
 
   showSection(hash) {
-    const newSection = $(`section#${hash}`);
-    const sections = $$('body > section');
+    const newSection = _.$(`section#${hash}`);
+    const sections = _.$$('body > section');
 
     sections.forEach((section) => {
       if (section === newSection) {
-        unHide(section);
+        _.show(section);
       } else {
-        hide(section);
+        _.hide(section);
       }
     });
+  }
+
+  highlightLinks(hash) {
+    const currentLinks = _.$$(`a[href="#${hash}"]`);
+    const otherLinks = _.$$(`a:not([href="#${hash}"])`);
+
+    currentLinks.forEach(link => _.addClass('highlight', link));
+    otherLinks.forEach(link => _.removeClass('highlight', link));
   }
 }

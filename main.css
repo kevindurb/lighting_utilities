@@ -1,4 +1,5 @@
 @import '/theme.css';
+@import '/layout.css';
 
 html {
   box-sizing: border-box;
@@ -22,6 +23,10 @@ a {
   display: inline-block;
 }
 
+a.highlight {
+  background-color: var(--color-white);
+}
+
 a:hover {
   text-decoration: underline;
 }
@@ -33,5 +38,11 @@ nav {
 }
 
 section {
-  padding: 0 var(--gap-2);
+  padding: var(--gap-2);
+  display: none;
+}
+
+input {
+  width: 100%;
+  margin: var(--gap-2);
 }
