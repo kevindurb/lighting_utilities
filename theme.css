@@ -1,0 +1,19 @@
+.light-theme {
+  --color-white: #ECEFF1;
+  --color-light: #CFD8DC;
+  --color-dark: #37474F;
+  --color-black: #263238;
+
+  --gap-1: 8px;
+  --gap-2: 16px;
+}
+
+.dark-theme {
+  --color-white: #263238;
+  --color-light: #37474F;
+  --color-dark: #CFD8DC;
+  --color-black: #ECEFF1;
+
+  --gap-1: 8px;
+  --gap-2: 16px;
+}
